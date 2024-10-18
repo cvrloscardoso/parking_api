@@ -1,17 +1,41 @@
 class ParkingController < ApplicationController
   def create
-    render json: { message: "created" }, status: :ok
+    parking = create_parking
+
+    render json: { parking_id: parking.id }, status: :created
   end
 
   def show
-    render json: { message: "showed" }, status: :ok
+    render json: parkings_by_plate, each_serializer: ParkingSerializer, status: :ok
   end
 
   def out
-    render json: { message: "outed" }, status: :ok
+    Parkings::OutUpdater.perform(parking_id)
+
+    render json: {}, status: :ok
   end
 
   def pay
-    render json: { message: "payed" }, status: :ok
+    Parkings::PayUpdater.perform(parking_id)
+
+    render json: {}, status: :ok
+  end
+
+  private
+
+  def create_parking
+    Parkings::Creator.perform(vehicle_plate).parking
+  end
+
+  def parkings_by_plate
+    @parkings_by_plate ||= Vehicle.find_by(plate: vehicle_plate).parkings
+  end
+
+  def vehicle_plate
+    @vehicle_plate = params[:plate]
+  end
+
+  def parking_id
+    @parking_id = params[:id]
   end
 end

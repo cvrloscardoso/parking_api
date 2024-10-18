@@ -15,9 +15,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_17_192454) do
   enable_extension "plpgsql"
 
   create_table "parkings", force: :cascade do |t|
-    t.boolean "paid", null: false
-    t.date "entry_time", null: false
-    t.date "exit_time"
+    t.boolean "paid", default: false, null: false
+    t.datetime "entry_time", null: false
+    t.datetime "exit_time"
     t.bigint "vehicle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
