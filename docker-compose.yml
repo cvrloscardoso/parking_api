@@ -1,0 +1,27 @@
+services:
+  parking_api:
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "rm -f /app/tmp/pids/server.pid && bundle exec rails server -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      - gems:/gems
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres13:/var/lib/postgresql/data
+
+volumes:
+  gems:
+  postgres13:
