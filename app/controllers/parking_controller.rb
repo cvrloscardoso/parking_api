@@ -1,4 +1,7 @@
 class ParkingController < ApplicationController
+  rescue_from ArgumentError, with: :argument_error_handler
+  rescue_from StandardError, with: :standard_error_handler
+
   def show
     render json: parkings_by_plate, each_serializer: ParkingSerializer, status: :ok
   end
@@ -37,5 +40,13 @@ class ParkingController < ApplicationController
 
   def parking_id
     @parking_id = params[:id]
+  end
+
+  def argument_error_handler(error)
+    render json: { error: error.message }, status: :unprocessable_entity
+  end
+
+  def standard_error_handler(error)
+    render json: { error: error.message }, status: :bad_request
   end
 end
