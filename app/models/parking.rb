@@ -9,10 +9,10 @@ class Parking < ApplicationRecord
   end
 
   def pay!
-    self.update!(paid: true)
+    update!(paid: true)
   end
 
   def exit!
-    self.update!(exit_time: DateTime.current)
+    update!(exit_time: DateTime.current)
   end
 end

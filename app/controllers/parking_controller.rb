@@ -1,12 +1,12 @@
 class ParkingController < ApplicationController
+  def show
+    render json: parkings_by_plate, each_serializer: ParkingSerializer, status: :ok
+  end
+
   def create
     parking = create_parking
 
     render json: { parking_id: parking.id }, status: :created
-  end
-
-  def show
-    render json: parkings_by_plate, each_serializer: ParkingSerializer, status: :ok
   end
 
   def out

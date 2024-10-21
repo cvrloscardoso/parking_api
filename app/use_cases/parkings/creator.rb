@@ -22,7 +22,7 @@ module Parkings
     def find_or_create_vehicle!
       @vehicle =
         Vehicle.find_by(plate: vehicle_plate).presence ||
-          Vehicles::Creator.perform(vehicle_plate).vehicle
+        Vehicles::Creator.perform(vehicle_plate).vehicle
     end
 
     def create_parking

@@ -1,6 +1,8 @@
 require:
+  - 'rubocop-factory_bot'
   - 'rubocop-rails'
   - 'rubocop-rspec'
+  - 'rubocop-rspec_rails'
 
 AllCops:
   NewCops: enable
@@ -73,6 +75,9 @@ Style/HashSyntax:
 
 Style/Lambda:
   EnforcedStyle: literal
+
+Style/ClassAndModuleChildren:
+  Enabled: false
 
 Style/NumericLiterals:
   Enabled: false
