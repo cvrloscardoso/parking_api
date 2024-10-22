@@ -18,9 +18,7 @@ WORKDIR /app
 COPY Gemfile* ./
 
 RUN gem install bundler -v 2.4.12 \
-    && bundle config --global frozen 1 \
-    && bundle config set --global without "development test" \
-    && bundle install --jobs $(nproc --ignore=1) --retry 5
+    && bundle install --jobs=4 --retry=3
 
 RUN apk del .build-deps
 
