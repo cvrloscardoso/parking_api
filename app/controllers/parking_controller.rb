@@ -35,7 +35,7 @@ class ParkingController < ApplicationController
   end
 
   def vehicle_plate
-    params[:plate].upcase
+    params[:plate].try(:upcase)
   end
 
   def parking_id

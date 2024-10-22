@@ -54,7 +54,7 @@ Caso tente registrar uma placa com valor inválido, o seguinte erro será retorn
 Realiza o pagamento do estacionamento.
 
 ```
-PUT /parking/:parking_id/pay
+PUT /parking/:id/pay
 
 response: {}, status: 200 OK
 ```
@@ -68,7 +68,7 @@ response: { "error": "Parking already paid" }, status: 400 Bad Request
 Registra a saída do estacionamento.
 
 ```
-PUT /parking/:parking_id/out
+PUT /parking/:id/out
 
 response: {}, status: 200 OK
 ```
