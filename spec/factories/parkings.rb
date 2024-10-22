@@ -7,7 +7,6 @@ FactoryBot.define do
 
     trait :paid do
       paid { true }
-      exit_time { DateTime.current }
     end
   end
 end

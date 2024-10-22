@@ -74,11 +74,24 @@ RSpec.describe ParkingController, type: :request do
       let(:parking) { create(:parking, :paid) }
       let(:parking_id) { parking.id }
 
-      it do
-        out_request
+      context 'when parking is paid' do
+        context 'when vehicle is already out' do
+          before { parking.exit! }
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to eq({}.to_json)
+          it do
+            out_request
+
+            expect(response).to have_http_status(:bad_request)
+            expect(response.body).to eq({ error: 'Vehicle already out' }.to_json)
+          end
+        end
+
+        it do
+          out_request
+
+          expect(response).to have_http_status(:ok)
+          expect(response.body).to eq({}.to_json)
+        end
       end
 
       context 'when parking is not paid' do

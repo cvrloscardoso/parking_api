@@ -16,6 +16,7 @@ module Parkings
     attr_reader :parking_id
 
     def validate!
+      raise StandardError, 'Vehicle already out' if parking.exit_time.present?
       raise StandardError, 'Parking must be paid' if parking.unpaid?
     end
 

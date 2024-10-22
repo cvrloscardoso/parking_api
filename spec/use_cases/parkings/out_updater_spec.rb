@@ -20,7 +20,13 @@ RSpec.describe Parkings::OutUpdater do
     end
 
     context 'when parking is paid' do
-      before { parking.pay! }
+      context 'when vehicle is already out' do
+        before { parking.exit! }
+
+        it 'raises an error' do
+          expect { subject }.to raise_error(StandardError, 'Vehicle already out')
+        end
+      end
 
       it 'updates parking exit time' do
         expect { parking.exit! }.to change(parking, :exit_time).from(nil).to(be_present)
