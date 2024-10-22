@@ -1,6 +1,5 @@
 module Parkings
   class OutUpdater
-    include Validator
     include UseCase
 
     def initialize(parking_id)
@@ -17,8 +16,7 @@ module Parkings
     attr_reader :parking_id
 
     def validate!
-      super
-      raise StandardError, 'Parking is not paid' if parking.unpaid?
+      raise StandardError, 'Parking must be paid' if parking.unpaid?
     end
 
     def parking

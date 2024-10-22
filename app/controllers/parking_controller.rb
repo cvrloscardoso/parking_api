@@ -1,6 +1,6 @@
 class ParkingController < ApplicationController
-  rescue_from ArgumentError, with: :argument_error_handler
   rescue_from StandardError, with: :standard_error_handler
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_error_handler
 
   def show
     render json: parkings_by_plate, each_serializer: ParkingSerializer, status: :ok
@@ -31,7 +31,7 @@ class ParkingController < ApplicationController
   end
 
   def parkings_by_plate
-    @parkings_by_plate ||= Vehicle.find_by(plate: vehicle_plate).parkings
+    @vehicle = Vehicle.find_by!(plate: vehicle_plate).parkings
   end
 
   def vehicle_plate
@@ -42,8 +42,8 @@ class ParkingController < ApplicationController
     @parking_id = params[:id]
   end
 
-  def argument_error_handler(error)
-    render json: { error: error.message }, status: :unprocessable_entity
+  def record_not_found_error_handler(_error)
+    render json: { error: 'Record not found' }, status: :not_found
   end
 
   def standard_error_handler(error)

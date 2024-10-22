@@ -18,7 +18,7 @@ module Vehicles
     attr_reader :plate
 
     def validate!
-      raise ArgumentError, 'Invalid vehicle plate' unless plate.match?(/\A[A-Z]{3}-\d{4}\z/)
+      raise ArgumentError, 'Invalid vehicle plate' unless plate.match?(/\A[A-Z]{3}-[A-Z0-9]{4}\z/)
     end
 
     def create_vehicle

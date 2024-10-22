@@ -14,15 +14,16 @@ class ParkingSerializer < ActiveModel::Serializer
   private
 
   def formatted_time
-    seconds = object.exit_time - object.entry_time
+    exit_time = object.exit_time.presence || Time.current
+    seconds = exit_time - object.entry_time
 
     hours = (seconds / SECONDS_IN_ONE_HOUR).to_i
     minutes = ((seconds % SECONDS_IN_ONE_HOUR) / 60).to_i
 
     time = []
 
-    time << "#{hours} horas" if hours.positive?
-    time << "#{minutes} minutos"
+    time << "#{hours} hours" if hours.positive?
+    time << "#{minutes} minutes"
 
     time.join(', ')
   end

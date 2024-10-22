@@ -18,9 +18,9 @@ WORKDIR /app
 
 COPY Gemfile* ./
 
-# RUN bundle install \
-#     && rm -rf /gems/cache/*.gem
-
 COPY . .
+
+RUN gem install bundler -v 2.4.12 \
+    && bundle install
 
 EXPOSE 3000

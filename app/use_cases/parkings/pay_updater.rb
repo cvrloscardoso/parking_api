@@ -1,6 +1,5 @@
 module Parkings
   class PayUpdater
-    include Validator
     include UseCase
 
     def initialize(parking_id)
@@ -8,7 +7,6 @@ module Parkings
     end
 
     def perform
-      validate!
       parking.pay!
     end
 
