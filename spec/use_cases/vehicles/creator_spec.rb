@@ -4,7 +4,7 @@ RSpec.describe Vehicles::Creator do
       subject { described_class.perform('ABC-12345') }
 
       it 'raises an error' do
-        expect { subject }.to raise_error(ArgumentError, 'Invalid vehicle plate').
+        expect { subject }.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Plate is invalid').
           and not_change { Vehicle.count }
       end
     end

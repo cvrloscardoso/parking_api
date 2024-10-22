@@ -35,11 +35,11 @@ class ParkingController < ApplicationController
   end
 
   def vehicle_plate
-    @vehicle_plate = params[:plate]
+    params[:plate].upcase
   end
 
   def parking_id
-    @parking_id = params[:id]
+    params[:id]
   end
 
   def record_not_found_error_handler(_error)

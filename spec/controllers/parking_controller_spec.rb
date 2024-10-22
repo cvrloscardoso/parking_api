@@ -51,7 +51,7 @@ RSpec.describe ParkingController, type: :request do
         create_request
 
         expect(response).to have_http_status(:bad_request)
-        expect(response.body).to eq({ error: 'Invalid vehicle plate' }.to_json)
+        expect(response.body).to eq({ error: 'Validation failed: Plate is invalid' }.to_json)
       end
     end
   end

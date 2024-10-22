@@ -17,6 +17,14 @@ RSpec.describe Parkings::PayUpdater do
       it 'updates parking paid attribute' do
         expect { parking.pay! }.to change(parking, :paid).from(false).to(true)
       end
+
+      context 'when parking is already paid' do
+        before { parking.pay! }
+
+        it 'raises an error' do
+          expect { subject }.to raise_error(StandardError, 'Parking already paid')
+        end
+      end
     end
   end
 end

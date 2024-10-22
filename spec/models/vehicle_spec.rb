@@ -7,5 +7,6 @@ RSpec.describe Vehicle do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:plate) }
+    it { is_expected.to validate_uniqueness_of(:plate) }
   end
 end
