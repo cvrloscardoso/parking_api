@@ -21,7 +21,7 @@ No projeto a dois dockerfiles:
 Para subir o projeto localmente, basta utilizar o seguinte comando: \
 `docker compose up parking_api_dev`
 
-Onde após toda a configuração realizada, o projeto estara rodando no seguinte endereço `0.0.0.0/3000`.
+Onde após toda a configuração realizada, o projeto estara rodando no seguinte endereço `0.0.0.0:3000`.
 
 ## Testes unitários
 Após subir o projeto utilizando docker, acesse o container `docker compose exec parking_api_dev bash` e utilize o seguinte comando para rodar os testes unitários do projeto: \
