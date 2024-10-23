@@ -14,6 +14,8 @@ services:
   parking_api:
     tty: true
     build:
+      args:
+        - RAILS_ENV=production
       context: .
       dockerfile: Dockerfile
     volumes:

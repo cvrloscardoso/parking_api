@@ -1,7 +1,10 @@
 FROM ruby:3.2.1-alpine
 
+ARG RAILS_ENV
+
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
+ENV RAILS_ENV=$RAILS_ENV
 
 RUN apk add --update --no-cache \
     bash \
