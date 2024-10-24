@@ -17,6 +17,10 @@ No projeto a dois dockerfiles:
 1. `Dockerfile.development` utilizado para o projeto local.
 2. `Dockerfile` utilizado para o deploy de teste.
 
+## Configurar o banco de dados
+Após o build do projeto, acessar a maquina/container e executar o seguinte comando: \
+`bundle exec rails db:setup`
+
 ## Ambiente de desenvolvimento
 Para subir o projeto localmente, basta utilizar o seguinte comando: \
 `docker compose up parking_api_dev`
