@@ -5,6 +5,7 @@ ARG RAILS_ENV
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV RAILS_ENV=$RAILS_ENV
+ENV SECRET_KEY_BASE=dumb
 
 RUN apk add --update --no-cache \
     bash \
