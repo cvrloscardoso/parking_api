@@ -140,7 +140,7 @@ GEM
     parser (3.3.5.0)
       ast (~> 2.4.1)
       racc
-    pg (1.5.8)
+    pg (1.5.9)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -274,7 +274,7 @@ DEPENDENCIES
   byebug (~> 11.1)
   database_cleaner-active_record (~> 2.1)
   factory_bot_rails (~> 6.2)
-  pg (~> 1.1)
+  pg (~> 1.5)
   pry-byebug (~> 3.10)
   pry-rails (~> 0.3)
   puma (>= 5.0)
