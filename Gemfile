@@ -11,7 +11,7 @@ gem 'tzinfo-data', '~> 1.2024'
 group :development, :test do
   gem 'byebug', '~> 11.1'
   gem 'pry-byebug', '~> 3.10'
-  gem 'rubocop-rails', '~> 2.18'
+  gem 'rubocop-rails', '~> 2.27'
   gem 'rubocop-rspec', '~> 2.19'
   gem 'spring', '~> 4.1'
 end
