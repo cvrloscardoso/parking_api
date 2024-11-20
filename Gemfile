@@ -20,5 +20,5 @@ group :test do
   gem 'database_cleaner-active_record', '~> 2.1'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'rspec-rails', '~> 6.0'
-  gem 'shoulda-matchers', '~> 5.3'
+  gem 'shoulda-matchers', '~> 6.4'
 end
