@@ -6,7 +6,7 @@ gem 'pry-rails', '~> 0.3'
 gem 'puma', '>= 5.0'
 gem 'rack-cors', '~> 2.0'
 gem 'rails', '~> 7.2.1', '>= 7.2.1.1'
-gem 'tzinfo-data', '~> 1.2024'
+gem 'tzinfo-data', '~> 1.2025'
 
 group :development, :test do
   gem 'byebug', '~> 11.1'
